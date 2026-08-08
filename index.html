@@ -119,18 +119,12 @@
     .flourish .l { width: 70px; height: 1px; background: var(--line); }
 
     /* ---- location ---- */
-    .map-placeholder {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 27px, #f2efe8 27px, #f2efe8 28px),
-        repeating-linear-gradient(90deg, transparent, transparent 27px, #f2efe8 27px, #f2efe8 28px),
-        var(--surface);
-      height: 240px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 14px; letter-spacing: 0.04em;
-      margin-bottom: 22px;
+    .map-link { display: block; }
+    .map-link img {
+      width: 100%; height: auto; display: block;
+      border: 1px solid var(--line); border-radius: 14px;
     }
+    .map-attr { font-size: 11px; color: var(--muted); margin: 6px 0 20px; text-align: right; }
     .address { color: var(--ink-soft); }
     .btn {
       display: inline-block;
@@ -258,7 +252,10 @@
     <div class="eyebrow"><span class="en">Find Us</span><span class="ko">오시는 길</span></div>
     <h2><span class="en">Location</span><span class="ko">위치</span></h2>
     <div class="rule"></div>
-    <div class="map-placeholder"><span class="en">Static map image — placeholder</span><span class="ko">정적 지도 이미지 — 자리표시</span></div>
+    <a class="map-link" href="https://maps.app.goo.gl/JVagLDM6HDKbiV5N7" target="_blank" rel="noopener">
+      <img src="assets/map.png" alt="Map — 20505 Fraser Hwy, Unit 208, Langley, BC" loading="lazy" />
+    </a>
+    <p class="map-attr">© OpenStreetMap contributors</p>
     <p class="address en">20505 Fraser Hwy, Unit 208, Langley, BC</p>
     <p class="address ko">20505 Fraser Hwy, Unit 208, Langley, BC (브리티시컬럼비아주 랭리)</p>
     <a class="btn" href="https://maps.app.goo.gl/JVagLDM6HDKbiV5N7" target="_blank" rel="noopener"><span class="en">Get directions →</span><span class="ko">길찾기 →</span></a>
