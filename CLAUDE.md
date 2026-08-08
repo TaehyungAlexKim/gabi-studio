@@ -5,7 +5,9 @@
 > **새 세션(Claude)에게**: 이 파일은 워크스페이스 열 때 자동 로드됩니다. 여기가 출처. 사용자 안내는 `README.md`.
 
 ## 무엇 / 누구
-- 스튜디오: **Gabi Studio** (피아노, Vancouver). 로고는 추후 제공 → 현재 텍스트 로고("Gabi. Studio", Caveat 폰트).
+- 스튜디오 공식명(구글 등록): **Gabi Studio Music & Art** (Langley, BC). 피아노 중심 + 아트.
+- **로고 확보**: `assets/logo.png`(블랙, 흰 배경용 — 히어로에 사용), `assets/logo-light.png`(베이지, 어두운 배경용). 원본 3종 `assets/logos/`(ai/pdf/png/jpg). Sempé풍 손그림 + "Gabi Studio Music&Art" 손글씨.
+- ⚠️ 폼은 현재 **피아노 경험** 항목 — 브랜드가 music&art라 아트까지 넓힐지 사용자 확인 필요.
 - 사용자(나)가 기술 담당, 선생님 무관여가 원칙.
 - ⚠️ `~/piano-invoice`(피아노 인보이스 시스템)와 **같은 스튜디오인지 미확인** — 확인되면 브랜딩/이메일 일원화.
 
