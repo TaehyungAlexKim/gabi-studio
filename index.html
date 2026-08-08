@@ -119,11 +119,22 @@
     .flourish .l { width: 70px; height: 1px; background: var(--line); }
 
     /* ---- location ---- */
-    .map-link { display: block; }
+    .map-link { position: relative; display: block; }
     .map-link img {
       width: 100%; height: auto; display: block;
       border: 1px solid var(--line); border-radius: 14px;
     }
+    .map-cta {
+      position: absolute; right: 12px; bottom: 12px;
+      background: rgba(255,255,255,.9); backdrop-filter: blur(4px);
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 7px 15px; font-size: 13px; letter-spacing: 0.03em;
+      color: var(--accent-deep); font-family: var(--font-en-body);
+      box-shadow: 0 3px 10px rgba(60,55,45,.12);
+      transition: background .2s, color .2s;
+    }
+    body.lang-ko .map-cta { font-family: var(--font-ko-body); }
+    .map-link:hover .map-cta { background: var(--accent); color: #fff; }
     .map-attr { font-size: 11px; color: var(--muted); margin: 6px 0 20px; text-align: right; }
     .address { color: var(--ink-soft); }
     .btn {
@@ -252,10 +263,11 @@
     <div class="eyebrow"><span class="en">Find Us</span><span class="ko">오시는 길</span></div>
     <h2><span class="en">Location</span><span class="ko">위치</span></h2>
     <div class="rule"></div>
-    <a class="map-link" href="https://maps.app.goo.gl/JVagLDM6HDKbiV5N7" target="_blank" rel="noopener">
+    <a class="map-link" href="https://maps.app.goo.gl/JVagLDM6HDKbiV5N7" target="_blank" rel="noopener" aria-label="Open location in Google Maps">
       <img src="assets/map.png" alt="Map — 20505 Fraser Hwy, Unit 208, Langley, BC" loading="lazy" />
+      <span class="map-cta"><span class="en">Google Maps ↗</span><span class="ko">구글지도에서 보기 ↗</span></span>
     </a>
-    <p class="map-attr">© OpenStreetMap contributors</p>
+    <p class="map-attr">© OpenStreetMap contributors, © CARTO</p>
     <p class="address en">20505 Fraser Hwy, Unit 208, Langley, BC</p>
     <p class="address ko">20505 Fraser Hwy, Unit 208, Langley, BC (브리티시컬럼비아주 랭리)</p>
     <a class="btn" href="https://maps.app.goo.gl/JVagLDM6HDKbiV5N7" target="_blank" rel="noopener"><span class="en">Get directions →</span><span class="ko">길찾기 →</span></a>
