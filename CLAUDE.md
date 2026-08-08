@@ -33,7 +33,7 @@
 - 폰트: 로고 Caveat / EN 제목 Cormorant Garamond / EN 본문 Nunito Sans / KO Nanum Myeongjo+Noto Sans KR. Sempé 미학 = 타이포 + 가는 선(삽화 없음, 추후 로고 제공).
 - **EN/KO 언어 토글**(우상단, localStorage 기억). 텍스트는 `.en`/`.ko` span, body class로 전환.
 - **플로팅 하단 메뉴**: About·Location·Contact(소개·오시는 길·문의) + 스크롤스파이.
-- 섹션: 히어로 · 소개 · 오시는 길(**정적 지도 이미지 + 길찾기 링크**) · 문의 폼.
+- 섹션: 히어로 · 소개 · **피아노** · **미술** · 오시는 길(**정적 지도 이미지 + 길찾기 링크**) · 문의 폼. (플로팅 메뉴 5항목, 스크롤스파이.)
 - **폼**(Formsubmit AJAX): 학생 이름·나이·학년·연락처·이메일·피아노 경험(select)·레벨/비고.
   - ✅ **활성화 완료** — 엔드포인트 = Formsubmit 별칭 `dc8822359e8161279e6a2414f2114f51` (Gmail로 전송, 소스에 이메일 평문 없음). end-to-end 전송 검증됨.
 - 방문 카운터: GoatCounter (코드 미정, `<head>`에 주석 자리표시).
