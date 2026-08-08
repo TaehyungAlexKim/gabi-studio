@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabi Studio — Piano</title>
+  <meta name="description" content="Gabi Studio — piano lessons. (placeholder)" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- EN: Caveat (logo), Cormorant Garamond (headings), Nunito Sans (body) · KO: Nanum Myeongjo / Noto Sans KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@300;400;600&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!--
+    Visit counter (GoatCounter — free, private, no cookies). To enable:
+    create a site (e.g. code "gabi"), then uncomment & set the code below.
+  -->
+  <!-- <script data-goatcounter="https://gabi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+
+  <style>
+    :root {
+      --bg:        #fbfaf7;
+      --surface:   #ffffff;
+      --ink:       #33322e;
+      --ink-soft:  #6f6d66;
+      --muted:     #9a978e;
+      --line:      #e8e4dc;
+      --accent:    #7f97a6;
+      --accent-deep:#5f7789;
+      --font-en-body: 'Nunito Sans', -apple-system, sans-serif;
+      --font-en-head: 'Cormorant Garamond', Georgia, serif;
+      --font-ko-body: 'Noto Sans KR', sans-serif;
+      --font-ko-head: 'Nanum Myeongjo', serif;
+      --font-logo: 'Caveat', cursive;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-en-body);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      letter-spacing: 0.005em;
+    }
+    body.lang-ko { font-family: var(--font-ko-body); }
+
+    /* ---- language visibility ---- */
+    .ko { display: none; }
+    body.lang-ko .en { display: none; }
+    body.lang-ko .ko { display: revert; }
+
+    /* ---- layout ---- */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 76px 26px;
+    }
+    section + section { border-top: 1px solid var(--line); }
+
+    h2 {
+      font-family: var(--font-en-head);
+      font-weight: 500;
+      font-size: 32px;
+      letter-spacing: 0.02em;
+      margin: 0 0 4px;
+      color: var(--ink);
+    }
+    body.lang-ko h2 { font-family: var(--font-ko-head); font-weight: 700; font-size: 27px; }
+    .eyebrow {
+      font-size: 12.5px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 600;
+      font-family: var(--font-en-body);
+      margin-bottom: 14px;
+    }
+    .rule { width: 42px; height: 1px; background: var(--accent); margin: 20px 0 26px; }
+    p { margin: 0 0 18px; color: var(--ink-soft); font-weight: 300; }
+    body.lang-ko p { font-weight: 300; }
+
+    /* ---- hero ---- */
+    .hero {
+      text-align: center;
+      padding-top: 118px;
+      padding-bottom: 64px;
+      border-top: none;
+    }
+    .logo {
+      font-family: var(--font-logo);
+      font-size: clamp(58px, 16vw, 92px);
+      font-weight: 600;
+      line-height: 1;
+      color: var(--ink);
+      margin: 0;
+    }
+    .logo .dot { color: var(--accent); }
+    .hero .tagline {
+      font-family: var(--font-en-head);
+      font-style: italic;
+      font-size: 21px;
+      color: var(--ink-soft);
+      margin-top: 12px;
+    }
+    body.lang-ko .hero .tagline { font-family: var(--font-ko-head); font-style: normal; }
+    .hero .place {
+      font-size: 12.5px; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--muted); margin-top: 20px; font-family: var(--font-en-body);
+    }
+
+    /* thin-line flourish */
+    .flourish { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 30px auto 0; color: var(--accent); }
+    .flourish svg { display: block; }
+    .flourish .l { width: 70px; height: 1px; background: var(--line); }
+
+    /* ---- location ---- */
+    .map-placeholder {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 27px, #f2efe8 27px, #f2efe8 28px),
+        repeating-linear-gradient(90deg, transparent, transparent 27px, #f2efe8 27px, #f2efe8 28px),
+        var(--surface);
+      height: 240px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 14px; letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+    .address { color: var(--ink-soft); }
+    .btn {
+      display: inline-block;
+      font-family: var(--font-en-body);
+      font-size: 14px; letter-spacing: 0.06em;
+      color: var(--accent-deep);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 11px 22px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+      margin-top: 6px;
+    }
+    .btn:hover { background: var(--accent); color: #fff; }
+
+    /* ---- form ---- */
+    form { display: grid; gap: 16px; margin-top: 6px; }
+    .field label {
+      display: block; font-size: 13px; letter-spacing: 0.04em;
+      color: var(--ink-soft); margin-bottom: 6px; font-family: var(--font-en-body);
+    }
+    body.lang-ko .field label { font-family: var(--font-ko-body); }
+    input, select, textarea {
+      width: 100%; font-family: inherit; font-size: 16px; font-weight: 300;
+      color: var(--ink);
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    input:focus, select:focus, textarea:focus { outline: 1.5px solid var(--accent); border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 76px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+
+    button.submit {
+      font-family: var(--font-en-head); font-size: 17px; letter-spacing: 0.06em;
+      background: var(--ink); color: #fff; border: none; border-radius: 10px;
+      padding: 15px; cursor: pointer; transition: background .2s; margin-top: 4px;
+    }
+    body.lang-ko button.submit { font-family: var(--font-ko-head); }
+    button.submit:hover { background: var(--accent-deep); }
+    button.submit:disabled { opacity: .6; cursor: default; }
+    .form-status { min-height: 22px; font-size: 15px; }
+    .form-status.ok { color: #4f8a5b; }
+    .form-status.err { color: #b06a63; }
+    .hp { position: absolute; left: -9999px; top: -9999px; }
+
+    /* ---- footer ---- */
+    footer { text-align: center; padding: 40px 20px 130px; color: var(--muted); font-size: 13px; }
+    footer .fl { font-family: var(--font-logo); font-size: 26px; color: var(--ink-soft); }
+
+    /* ---- language toggle (top-right) ---- */
+    .lang-toggle {
+      position: fixed; top: 16px; right: 16px; z-index: 60;
+      display: flex; align-items: center;
+      background: rgba(255,255,255,.82); backdrop-filter: blur(8px);
+      border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
+      font-family: var(--font-en-body); font-size: 13px; letter-spacing: 0.06em;
+      box-shadow: 0 4px 14px rgba(60,55,45,.08);
+    }
+    .lang-toggle button {
+      border: none; background: transparent; cursor: pointer;
+      padding: 8px 13px; color: var(--muted); font: inherit;
+    }
+    .lang-toggle button.active { color: #fff; background: var(--accent); }
+
+    /* ---- floating section nav (bottom) ---- */
+    .float-nav {
+      position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+      z-index: 60; display: flex; gap: 4px;
+      background: rgba(255,255,255,.85); backdrop-filter: blur(10px);
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 6px; box-shadow: 0 8px 24px rgba(60,55,45,.12);
+      max-width: calc(100% - 28px);
+    }
+    .float-nav a {
+      text-decoration: none; color: var(--ink-soft);
+      font-family: var(--font-en-body); font-size: 13.5px; letter-spacing: 0.03em;
+      padding: 9px 16px; border-radius: 999px; white-space: nowrap;
+      transition: background .2s, color .2s;
+    }
+    body.lang-ko .float-nav a { font-family: var(--font-ko-body); }
+    .float-nav a.active { background: var(--accent); color: #fff; }
+    @media (max-width: 380px) { .float-nav a { padding: 9px 12px; font-size: 12.5px; } }
+  </style>
+</head>
+
+<body class="lang-en">
+
+  <!-- language toggle -->
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button id="btn-en" class="active" type="button">EN</button>
+    <button id="btn-ko" type="button">KO</button>
+  </div>
+
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <h1 class="logo">Gabi<span class="dot">.</span> Studio</h1>
+    <div class="tagline">
+      <span class="en">Lorem ipsum dolor sit amet, consectetur.</span>
+      <span class="ko">로렘 입숨 — 여기에 스튜디오 한 줄 소개가 들어갑니다.</span>
+    </div>
+    <div class="place">Piano · Vancouver</div>
+    <div class="flourish">
+      <span class="l"></span>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1"><circle cx="11" cy="11" r="3.2"/><path d="M14 11V4l4 1.4"/></svg>
+      <span class="l"></span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="eyebrow"><span class="en">About the Studio</span><span class="ko">스튜디오 소개</span></div>
+    <h2><span class="en">A place to grow with music</span><span class="ko">음악과 함께 자라는 공간</span></h2>
+    <div class="rule"></div>
+    <p class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p class="ko">로렘 입숨 — 여기에 스튜디오 소개 문단이 들어갑니다. 임시 자리표시 텍스트입니다. 실제 소개글로 교체될 예정입니다. 두어 문단 분량으로 준비해 주세요.</p>
+    <p class="en">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+    <p class="ko">로렘 입숨 — 두 번째 자리표시 문단입니다. 교육 철학, 커리큘럼, 대상 학생 등을 자유롭게 담을 수 있습니다.</p>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="eyebrow"><span class="en">Find Us</span><span class="ko">오시는 길</span></div>
+    <h2><span class="en">Location</span><span class="ko">위치</span></h2>
+    <div class="rule"></div>
+    <div class="map-placeholder"><span class="en">Static map image — placeholder</span><span class="ko">정적 지도 이미지 — 자리표시</span></div>
+    <p class="address en">123 Placeholder St, Vancouver, BC · (address placeholder)</p>
+    <p class="address ko">밴쿠버시 자리표시 주소 123 · (주소 자리표시)</p>
+    <a class="btn" href="#" target="_blank" rel="noopener"><span class="en">Get directions →</span><span class="ko">길찾기 →</span></a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="eyebrow"><span class="en">Lesson Inquiries</span><span class="ko">레슨 문의</span></div>
+    <h2><span class="en">Get in touch</span><span class="ko">문의하기</span></h2>
+    <div class="rule"></div>
+    <p class="en">Leave your details and we'll get back to you.</p>
+    <p class="ko">아래 정보를 남겨주시면 연락드리겠습니다.</p>
+
+    <form id="contact-form">
+      <!-- Formsubmit options — set the studio email once known -->
+      <input type="hidden" name="_subject" value="New piano lesson inquiry (Gabi Studio)" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+
+      <div class="field">
+        <label><span class="en">Student name</span><span class="ko">학생 이름</span></label>
+        <input type="text" name="student_name" required autocomplete="name"
+               data-ph-en="Student name" data-ph-ko="학생 이름" />
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label><span class="en">Age</span><span class="ko">나이</span></label>
+          <input type="number" name="age" min="1" max="120"
+                 data-ph-en="Age" data-ph-ko="나이" />
+        </div>
+        <div class="field">
+          <label><span class="en">Grade</span><span class="ko">학년</span></label>
+          <input type="text" name="grade"
+                 data-ph-en="School grade" data-ph-ko="학년" />
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label><span class="en">Phone</span><span class="ko">연락처</span></label>
+          <input type="tel" name="phone" autocomplete="tel"
+                 data-ph-en="Phone number" data-ph-ko="연락처" />
+        </div>
+        <div class="field">
+          <label><span class="en">Email</span><span class="ko">이메일</span></label>
+          <input type="email" name="email" required autocomplete="email"
+                 data-ph-en="Email" data-ph-ko="이메일" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="en">Piano experience</span><span class="ko">피아노 경험</span></label>
+        <select name="piano_experience" id="exp-select">
+          <option value="none" data-en="No experience" data-ko="없음">No experience</option>
+          <option value="beginner" data-en="Beginner" data-ko="초급">Beginner</option>
+          <option value="intermediate" data-en="Intermediate" data-ko="중급">Intermediate</option>
+          <option value="advanced" data-en="Advanced" data-ko="고급">Advanced</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label><span class="en">Level / notes (if any)</span><span class="ko">레벨 · 비고 (있다면)</span></label>
+        <textarea name="level_notes"
+                  data-ph-en="e.g. RCM grade, years learned, goals…"
+                  data-ph-ko="예: RCM 급수, 배운 기간, 목표 등"></textarea>
+      </div>
+
+      <button class="submit" type="submit" id="submit-btn"><span class="en">Send Inquiry</span><span class="ko">문의 보내기</span></button>
+      <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <footer>
+    <div class="fl">Gabi. Studio</div>
+    <div>© <span id="year"></span> Gabi Studio · Vancouver</div>
+  </footer>
+
+  <!-- floating section nav -->
+  <nav class="float-nav" aria-label="Sections">
+    <a href="#about" data-target="about"><span class="en">About</span><span class="ko">소개</span></a>
+    <a href="#location" data-target="location"><span class="en">Location</span><span class="ko">오시는 길</span></a>
+    <a href="#contact" data-target="contact"><span class="en">Contact</span><span class="ko">문의</span></a>
+  </nav>
+
+  <script>
+    document.getElementById('year').textContent = '2026';
+
+    /* ---------- language toggle ---------- */
+    const body = document.body;
+    const btnEn = document.getElementById('btn-en');
+    const btnKo = document.getElementById('btn-ko');
+
+    function setLang(lang) {
+      body.classList.toggle('lang-ko', lang === 'ko');
+      body.classList.toggle('lang-en', lang !== 'ko');
+      document.documentElement.lang = lang;
+      btnEn.classList.toggle('active', lang !== 'ko');
+      btnKo.classList.toggle('active', lang === 'ko');
+      // input placeholders
+      document.querySelectorAll('[data-ph-en]').forEach(el => {
+        el.placeholder = lang === 'ko' ? el.dataset.phKo : el.dataset.phEn;
+      });
+      // select option labels
+      document.querySelectorAll('#exp-select option').forEach(op => {
+        op.textContent = lang === 'ko' ? op.dataset.ko : op.dataset.en;
+      });
+      try { localStorage.setItem('gabi-lang', lang); } catch (e) {}
+    }
+    btnEn.addEventListener('click', () => setLang('en'));
+    btnKo.addEventListener('click', () => setLang('ko'));
+    let saved = 'en';
+    try { saved = localStorage.getItem('gabi-lang') || 'en'; } catch (e) {}
+    setLang(saved);
+
+    /* ---------- floating nav: smooth scroll + scrollspy ---------- */
+    const navLinks = Array.from(document.querySelectorAll('.float-nav a'));
+    navLinks.forEach(a => a.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById(a.dataset.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+    if ('IntersectionObserver' in window) {
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === en.target.id));
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      ['about', 'location', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+    }
+
+    /* ---------- form submit (Formsubmit AJAX — set studio email/alias) ---------- */
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn');
+    const MSG = {
+      sending: { en: 'Sending…', ko: '보내는 중…' },
+      ok:      { en: 'Thank you! Your message has been sent.', ko: '감사합니다! 문의가 전송되었습니다.' },
+      err:     { en: 'Something went wrong. Please try again later.', ko: '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.' },
+    };
+    const curLang = () => (body.classList.contains('lang-ko') ? 'ko' : 'en');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.className = 'form-status';
+      statusEl.textContent = MSG.sending[curLang()];
+      btn.disabled = true;
+      try {
+        // Studio email assembled from char codes so the plaintext never lands in this public repo.
+        // After first live submit, Formsubmit emails an 'Activate Form' link + a random alias
+        // to that inbox; once activated, replace this with the alias:
+        //   const endpoint = 'https://formsubmit.co/ajax/<alias>';
+        const cc = String.fromCharCode;
+        const STUDIO_EMAIL = cc(71,97,98,105,46,106,46,109,117,115,105,99) + cc(64) + cc(103,109,97,105,108,46,99,111,109);
+        const endpoint = 'https://formsubmit.co/ajax/' + STUDIO_EMAIL;
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (data.success === true || data.success === 'true') {
+          statusEl.className = 'form-status ok';
+          statusEl.textContent = MSG.ok[curLang()];
+          form.reset();
+          setLang(curLang()); // restore placeholders after reset
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        console.error('Form submission failed:', err);
+        statusEl.className = 'form-status err';
+        statusEl.textContent = MSG.err[curLang()];
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
