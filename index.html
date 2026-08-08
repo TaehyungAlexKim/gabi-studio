@@ -277,6 +277,15 @@
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
 
       <div class="field">
+        <label><span class="en">Interested in</span><span class="ko">관심 과목</span></label>
+        <select name="interest" id="interest-select">
+          <option value="piano" data-en="Piano" data-ko="피아노">Piano</option>
+          <option value="art" data-en="Art" data-ko="미술">Art</option>
+          <option value="both" data-en="Piano &amp; Art" data-ko="피아노 + 미술">Piano &amp; Art</option>
+        </select>
+      </div>
+
+      <div class="field">
         <label><span class="en">Student name</span><span class="ko">학생 이름</span></label>
         <input type="text" name="student_name" required autocomplete="name"
                data-ph-en="Student name" data-ph-ko="학생 이름" />
@@ -309,8 +318,8 @@
       </div>
 
       <div class="field">
-        <label><span class="en">Piano experience</span><span class="ko">피아노 경험</span></label>
-        <select name="piano_experience" id="exp-select">
+        <label><span class="en">Experience</span><span class="ko">경험</span></label>
+        <select name="experience" id="exp-select">
           <option value="none" data-en="No experience" data-ko="없음">No experience</option>
           <option value="beginner" data-en="Beginner" data-ko="초급">Beginner</option>
           <option value="intermediate" data-en="Intermediate" data-ko="중급">Intermediate</option>
@@ -360,8 +369,8 @@
       document.querySelectorAll('[data-ph-en]').forEach(el => {
         el.placeholder = lang === 'ko' ? el.dataset.phKo : el.dataset.phEn;
       });
-      // select option labels
-      document.querySelectorAll('#exp-select option').forEach(op => {
+      // select option labels (all selects)
+      document.querySelectorAll('option[data-en]').forEach(op => {
         op.textContent = lang === 'ko' ? op.dataset.ko : op.dataset.en;
       });
       try { localStorage.setItem('gabi-lang', lang); } catch (e) {}
