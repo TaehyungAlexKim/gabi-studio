@@ -406,13 +406,8 @@
       statusEl.textContent = MSG.sending[curLang()];
       btn.disabled = true;
       try {
-        // Studio email assembled from char codes so the plaintext never lands in this public repo.
-        // After first live submit, Formsubmit emails an 'Activate Form' link + a random alias
-        // to that inbox; once activated, replace this with the alias:
-        //   const endpoint = 'https://formsubmit.co/ajax/<alias>';
-        const cc = String.fromCharCode;
-        const STUDIO_EMAIL = cc(71,97,98,105,46,106,46,109,117,115,105,99) + cc(64) + cc(103,109,97,105,108,46,99,111,109);
-        const endpoint = 'https://formsubmit.co/ajax/' + STUDIO_EMAIL;
+        // Activated Formsubmit alias — delivers to the studio Gmail; keeps the email out of the source.
+        const endpoint = 'https://formsubmit.co/ajax/dc8822359e8161279e6a2414f2114f51';
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
