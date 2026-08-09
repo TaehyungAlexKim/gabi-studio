@@ -22,6 +22,10 @@
 
 ⚠️ **PUBLIC repo — 비밀/평문 이메일 커밋 금지.** (nas-admin(private)과 별개.)
 
+### HTTPS 상태
+- ✅ **라이브** (2026-08-09): https://www.gabistudio.ca/ 200, apex→www 301, Let's Encrypt 인증서, **Enforce HTTPS on**.
+- 발급이 ~하루 멈춰 있었음(설정은 정상이었음) → **커스텀 도메인 CNAME 제거→재추가 넛지**로 재트리거해 해결. 다음에 또 멈추면 같은 방법.
+
 ### Cloudflare 설정 (진행 중)
 - `www` → CNAME → `taehyungalexkim.github.io` (인증서 발급까진 **회색 구름=DNS only**)
 - apex `gabistudio.ca` → **www 리다이렉트**(Redirect Rule)
