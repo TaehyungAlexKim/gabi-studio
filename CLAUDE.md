@@ -26,11 +26,12 @@
 - ✅ **라이브** (2026-08-09): https://www.gabistudio.ca/ 200, apex→www 301, Let's Encrypt 인증서, **Enforce HTTPS on**.
 - 발급이 ~하루 멈춰 있었음(설정은 정상이었음) → **커스텀 도메인 CNAME 제거→재추가 넛지**로 재트리거해 해결. 다음에 또 멈추면 같은 방법.
 
-### Cloudflare 설정 (진행 중)
-- `www` → CNAME → `taehyungalexkim.github.io` (인증서 발급까진 **회색 구름=DNS only**)
-- apex `gabistudio.ca` → **www 리다이렉트**(Redirect Rule)
-- SSL/TLS = **Full** (Flexible 금지 — 리다이렉트 루프). 발급 후 Enforce HTTPS.
-- 설정 수단: 사용자가 **Zone DNS Edit 스코프 Cloudflare API 토큰** 제공 → curl로 레코드 생성, dig 검증. (토큰=비밀, 커밋 금지.)
+### Cloudflare 설정 — ✅ 완료 (프록시 ON, DDoS 보호)
+- `www` CNAME → `taehyungalexkim.github.io`, apex A·AAAA → GitHub IP — **전부 Proxied(주황)**.
+- **SSL/TLS = Full** (strict 아님 — GitHub 인증서 갱신 삐끗해도 안 죽게), **Always Use HTTPS on**.
+- 효과: 무료 플랜 **상시 DDoS 완화(L3/4/7)** + origin GitHub IP 은닉 + 엣지 캐싱. **Cloudflare Web Analytics** 사용 가능.
+- ⚠️ GitHub 인증서는 ~90일마다 자동 갱신 — 프록시 뒤라 드물게 갱신 삐끗 가능성. **2026-11초쯤 https 정상인지 한 번 확인** 권장.
+- 변경 수단: Zone(Read)+DNS(Edit)+Zone Settings(Edit) 스코프 CF API 토큰 (비밀, 커밋 금지, 사용 후 폐기).
 
 ## 디자인 / 구성
 - **흰색 계열 고급 톤**: 아이보리(`#fbfaf7`) 배경 + 소프트 차콜 텍스트 + 더스티 블루 포인트(`#7f97a6`) + hairline. 순검정 미사용.
