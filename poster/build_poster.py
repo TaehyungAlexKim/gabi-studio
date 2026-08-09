@@ -56,7 +56,7 @@ bb=logo.split()[3].getbbox()
 if bb: logo=logo.crop(bb)
 LW=1200; LH=int(logo.height*LW/logo.width)
 logo=logo.resize((LW,LH),Image.LANCZOS)
-logo_y=110
+logo_y=190
 img.paste(logo,(cx-LW//2,logo_y),logo)
 
 # ---- background: keyboard blended with oil canvas, duotone, fade up ----
@@ -87,7 +87,7 @@ d.line([(cx-40,sy+44),(cx+40,sy+44)],fill=ACCENT,width=2)
 
 # ---- QR card ----
 qr_png=os.path.join(HERE,"_qr.png")
-segno.make(URL,error="h").save(qr_png,scale=10,border=3,dark="#33322e",light="#ffffff")
+segno.make(URL,error="h").save(qr_png,scale=12,border=3,dark="#33322e",light="#ffffff")
 qr=Image.open(qr_png).convert("RGB"); QS=qr.size[0]
 pad_top,cap_h=56,150; cardw=QS+2*72; cardh=pad_top+QS+cap_h
 card_x=cx-cardw//2; card_y=sy+92
